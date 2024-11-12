@@ -1,20 +1,18 @@
-// screens/HomeScreen.js
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* Teks Selamat Datang */}
       <Text style={styles.welcomeText}>Selamat Datang</Text>
       <Text style={styles.subText}>&</Text>
       <Text style={styles.subText}>Selamat Bekerja</Text>
-      
+
       {/* Card Profil */}
       <View style={styles.profileCard}>
         <Image
-          source={require('../foto/pngtree-school-kids-going-to-waving-hands-cartoon-png-image_11931541.png')}  
+          source={require('../foto/pngtree-school-kids-going-to-waving-hands-cartoon-png-image_11931541.png')}
           style={styles.profileImage}
         />
         <View style={styles.profileInfo}>
@@ -35,6 +33,12 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>Absen Keluar</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Tombol Riwayat */}
+      <TouchableOpacity style={styles.historyButton} onPress={() => navigation.navigate('Riwayat')}>
+        <MaterialIcons name="history" size={24} color="#4CAF50" />
+        <Text style={styles.historyButtonText}>Lihat Riwayat Absen</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -113,4 +117,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginLeft: 10,
   },
+  historyButton: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  historyButtonText: {
+    fontSize: 16,
+    color: '#4CAF50',
+    marginLeft: 10,
+  },
+
 });

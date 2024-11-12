@@ -7,6 +7,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { SplashScreen } from 'expo-router';
 import Login from './screens/Login';
 import Home from './screens/Home';
+import Riwayat from './screens/Riwayat';
+
 
 // Buat Stack dan Tab Navigator
 const Stack = createStackNavigator();
@@ -36,6 +38,7 @@ export default function App() {
           options={{ headerShown: false }} // Contoh opsi untuk menyembunyikan header
         />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Riwayat" component={Riwayat} />
       </Stack.Navigator>
     </NavigationContainer>
   );
