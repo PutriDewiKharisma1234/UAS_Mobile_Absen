@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialIcons } from '@expo/vector-icons';
 import { View, Text, StyleSheet } from 'react-native';
 import { SplashScreen } from 'expo-router';
 import Login from './screens/Login';
+import Home from './screens/Home';
 
+// Buat Stack dan Tab Navigator
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // Menjaga splash screen tetap tampil selama aplikasi dimuat
 SplashScreen.preventAutoHideAsync();
@@ -30,6 +35,7 @@ export default function App() {
           component={Login} 
           options={{ headerShown: false }} // Contoh opsi untuk menyembunyikan header
         />
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Image } from 'react-native';
 
+
 export default function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -29,7 +30,7 @@ export default function LoginScreen({ navigation }) {
       {/* Tombol Masuk */}
       <Button
         title="Masuk"
-        onPress={() => navigation.navigate('Home')}  // Navigasi ke Home saat tombol Masuk ditekan
+        onPress={() => navigation.navigate('Home')}  
       />
       
       {/* Spasi antara tombol */}
@@ -39,7 +40,7 @@ export default function LoginScreen({ navigation }) {
       <Button
         title="Daftar"
         color="#555" // Warna abu-abu untuk membedakan tombol Daftar
-        onPress={() => navigation.replace('Login')}  // Hanya reload layar sebagai simulasi untuk pendaftaran
+        onPress={() => navigation.replace('Login')}  
       />
     </View>
   );
