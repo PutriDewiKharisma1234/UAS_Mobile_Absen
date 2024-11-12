@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "CHECKINOUT",
+    "slug": "CHECKINOUT",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "checkinout", 
+    "icon": "./assets/images/splashscreen.png",
+    "android": {
+      "package": "com.example.checkinout"
+    },
+    "splash": {
+      "image": "./assets/images/splashscreen.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#E2D8D8"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
