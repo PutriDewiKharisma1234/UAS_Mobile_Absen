@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, StyleSheet } from 'react-native';
 import { SplashScreen } from 'expo-router';
+import Login from './screens/Login';
 
+const Stack = createStackNavigator();
 
 // Menjaga splash screen tetap tampil selama aplikasi dimuat
 SplashScreen.preventAutoHideAsync();
@@ -18,10 +22,16 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Selamat Datang di Aplikasi CHECKINOUT!</Text>
-      {/* Di sini Anda bisa menambahkan lebih banyak komponen, seperti tombol atau daftar */}
-    </View>
+    <NavigationContainer independent={true}>
+      {/* Pastikan hanya ada satu NavigationContainer di sini */}
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{ headerShown: false }} // Contoh opsi untuk menyembunyikan header
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -30,7 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E2D8D8', // Warna latar belakang sesuai dengan app.json
+    backgroundColor: '#E2D8D8', 
   },
   title: {
     fontSize: 24,
