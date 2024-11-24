@@ -14,9 +14,11 @@ export default function LoginScreen({ navigation }) {
       <Text style={styles.title}>Silahkan masukkan Username & Password Anda</Text>
 
       {/* Input Username */}
+      <Text style={styles.text}>Email</Text>
       <TextInput style={styles.input} placeholder="Username" />
 
       {/* Input Password */}
+      <Text style={styles.text}>Password</Text>
       <TextInput style={styles.input} placeholder="Password" secureTextEntry />
 
       {/* Tombol Lupa Password */}
@@ -38,7 +40,7 @@ export default function LoginScreen({ navigation }) {
       {/* Teks Daftar */}
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>Belum punya akun? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Daftar')}>
           <Text style={styles.registerLink}>Daftar</Text>
         </TouchableOpacity>
       </View>
@@ -60,10 +62,14 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
   },
   input: {
     width: '50%',
@@ -77,11 +83,10 @@ const styles = StyleSheet.create({
     color : '#5E5858',
   },
   forgotPassword: {
-    alignSelf: 'flex-end',
     marginBottom: 30,
   },
   forgotPasswordText: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#998F8F',
     fontWeight: 'bold',
   },
@@ -105,7 +110,7 @@ const styles = StyleSheet.create({
   },
   registerText: {
     fontSize: 14,
-    color: '#333',
+    color: '#5E5858',
   },
   registerLink: {
     fontSize: 14,
