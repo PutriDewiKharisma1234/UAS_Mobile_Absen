@@ -8,7 +8,7 @@ import { SplashScreen } from 'expo-router';
 import Login from './screens/Login';
 import Home from './screens/Home';
 import Riwayat from './screens/Riwayat';
-
+import Lupa from './screens/Lupa';
 
 // Buat Stack dan Tab Navigator
 const Stack = createStackNavigator();
@@ -37,6 +37,7 @@ export default function App() {
           component={Login} 
           options={{ headerShown: false }} // Contoh opsi untuk menyembunyikan header
         />
+        <Stack.Screen name="Lupa" component={Lupa} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Riwayat" component={Riwayat} />
       </Stack.Navigator>
