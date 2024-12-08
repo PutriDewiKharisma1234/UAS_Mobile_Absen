@@ -50,26 +50,26 @@ export default function Home({ navigation }) {
         </View>
       </View>
 
-      {/* Menampilkan Nama Bulan dan Tahun */}
-      <Text style={styles.monthYearText}>{currentMonth}</Text>
-
-      {/* Kalender Mingguan */}
-      <View style={styles.weekContainer}>
-        {weekDates.map((item) => (
-          <TouchableOpacity
-            key={item.date}
-            style={[
-              styles.dateBox,
-              item.date === selectedDate ? styles.selectedDateBox : null,
-              item.isToday ? styles.todayBox : null,
-            ]}
-            onPress={() => setSelectedDate(item.date)}
-          >
-            <Text style={[styles.dateText, item.isToday ? styles.todayText : null]}>
-              {item.fullDate}
-            </Text>
-          </TouchableOpacity>
-        ))}
+      {/* Kalender Mingguan dan Nama Bulan dalam Satu Card */}
+      <View style={styles.calendarCard}>
+        <Text style={styles.monthYearText}>{currentMonth}</Text>
+        <View style={styles.weekContainer}>
+          {weekDates.map((item) => (
+            <TouchableOpacity
+              key={item.date}
+              style={[
+                styles.dateBox,
+                item.date === selectedDate ? styles.selectedDateBox : null,
+                item.isToday ? styles.todayBox : null,
+              ]}
+              onPress={() => setSelectedDate(item.date)}
+            >
+              <Text style={[styles.dateText, item.isToday ? styles.todayText : null]}>
+                {item.fullDate}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
 
       {/* Tombol Absen */}
@@ -143,37 +143,47 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#777',
   },
+  calendarCard: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 15,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 6,
+    elevation: 4,
+  },
   monthYearText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#998F8F',
+    color: '#333',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   weekContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginBottom: 20,
   },
   dateBox: {
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    backgroundColor: '#fff',
-    width: 100,
-    marginHorizontal: 3,
+    width: '13%',
   },
   selectedDateBox: {
     backgroundColor: '#4CAF50',
+    borderRadius: 10,
   },
   todayBox: {
     borderColor: '#f44336',
   },
   dateText: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#333',
     textAlign: 'center',
   },

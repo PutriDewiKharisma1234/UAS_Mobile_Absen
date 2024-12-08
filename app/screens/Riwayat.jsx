@@ -1,8 +1,8 @@
-// screens/AttendanceHistoryScreen.js
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 export default function Riwayat() {
+  // Data riwayat absen
   const attendanceHistory = [
     { id: '1', date: '2023-11-10', status: 'Masuk', time: '08:00' },
     { id: '2', date: '2023-11-10', status: 'Keluar', time: '17:00' },
@@ -11,17 +11,35 @@ export default function Riwayat() {
     // Tambahkan data lain sesuai kebutuhan
   ];
 
+  // Menggabungkan data berdasarkan tanggal
+  const groupedHistory = attendanceHistory.reduce((acc, record) => {
+    const { date, status, time } = record;
+    if (!acc[date]) {
+      acc[date] = { date, Masuk: '', Keluar: '' };
+    }
+    acc[date][status] = time;
+    return acc;
+  }, {});
+
+  const historyData = Object.values(groupedHistory); // Ubah objek menjadi array
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Riwayat Absen</Text>
       <FlatList
-        data={attendanceHistory}
-        keyExtractor={(item) => item.id}
+        data={historyData}
+        keyExtractor={(item) => item.date}
         renderItem={({ item }) => (
-          <View style={styles.historyItem}>
-            <Text style={styles.historyText}>
-              {item.date} - {item.status} - {item.time}
-            </Text>
+          <View style={styles.historyCard}>
+            <Text style={styles.dateText}>{item.date}</Text>
+            <View style={styles.timeRow}>
+              <Text style={styles.label}>Masuk:</Text>
+              <Text style={styles.time}>{item.Masuk || '-'}</Text>
+            </View>
+            <View style={styles.timeRow}>
+              <Text style={styles.label}>Keluar:</Text>
+              <Text style={styles.time}>{item.Keluar || '-'}</Text>
+            </View>
           </View>
         )}
       />
@@ -42,19 +60,35 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
-  historyItem: {
-    padding: 10,
+  historyCard: {
+    padding: 15,
     backgroundColor: '#fff',
-    borderRadius: 5,
-    marginBottom: 8,
+    borderRadius: 10,
+    marginBottom: 10,
     shadowColor: '#000',
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
     elevation: 3,
   },
-  historyText: {
+  dateText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#666',
+    marginBottom: 10,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 5,
+  },
+  label: {
     fontSize: 16,
+    color: '#333',
+  },
+  time: {
+    fontSize: 16,
+    fontWeight: 'bold',
     color: '#333',
   },
 });
